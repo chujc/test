@@ -1,39 +1,37 @@
-# 测试
+# 项目说明
 
-#### 项目介绍
-{**以下是码云平台说明，您可以替换为您的项目简介**
-码云是开源中国推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+简单测试百万级项目代码逻辑, 暂不进行深层测试
 
-#### 软件架构
-软件架构说明
+# 测试环境
 
-
-#### 安装教程
-
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 使用说明
-
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 参与贡献
-
-1. Fork 本项目
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
+1. 虚拟机 2核4G
+2. php7.2+ mysql5.7+
+3. 推荐使用Homestead
+4. 如果使用mysql5.7以下版本 请加入低版本兼容处理方案
+```php
+    //app/Providers/AppServiceProvider.php 文件路径
+    public function boot()
+    {
+        //兼容低版本mysql
+        \Schema::defaultStringLength(191);
+    }
+```
 
 
-#### 码云特技
+# 安装教程
 
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [http://git.mydoc.io/](http://git.mydoc.io/)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+用laravel5.5初始化一个项目 , 在使用本项目文件覆盖之前初始化的项目
+
+# 使用说明
+
+1. 先执行 php artisan migrate 迁移测试表
+2. 再执行 php artisan db:seed 生成测试数据 (100万条用户信息)
+    > 如果需要修改测试数据 文件路径database/seeds/DatabaseSeeder.php
+ 
+    > 此命令按上面推荐配置 大概需要20分钟
+3. 上面命令执行成功后再执行 php artisan test
+    > 此命令按上面推荐配置 大概需要50分钟
+# 测试效果
+
+![](test.png)
+![](test2.png)
